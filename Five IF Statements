@@ -1,0 +1,64 @@
+using System;
+
+namespace MyApplication
+
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      Console.WriteLine("Friend: Did you see the Steelers game?");
+      
+      Console.WriteLine("Vryan: No who won?");
+      
+      string steelersGame = "They won!";
+      if(steelersGame == "They won!")
+       {
+         Console.WriteLine("Friend: THE STEELERS DID THEY WON!");
+         Console.WriteLine("Vryan: NICE THEY ARE LOOKING GOOD!");
+      
+       }
+      
+      Console.WriteLine("Classmate: What answer did you get for number 3?");
+       
+      string mathAnswer = "x = 45";
+      if(mathAnswer == "x = 45")
+       {
+         Console.WriteLine("Vryan: I got x = 45");
+         Console.WriteLine("Classmate: Nice! Thats what I got.");
+       }
+       
+       string x = "100";
+       
+       if(x == "100")
+       {
+       	 Console.WriteLine("Teacher: What is the answer for number 7?");
+         Console.WriteLine("Vryan: The answer is " +x);
+       }
+       
+      Console.WriteLine("Teacher: which one is the bigger number?");
+      int z = 100;
+      int y = 101;
+      if (z > y)
+       {
+         Console.WriteLine("Class: z is greater than y");
+         
+       }
+       else
+       {
+         Console.WriteLine("Class: y is greater than z");
+       }
+      
+      Console.WriteLine("Friend: Who would you say is the better player Patrick Mahomes or Aaron Rodgers.");
+      Console.WriteLine("Vryan: Easy Mahomes.");
+      
+      string betterplayer = "Mahomes";
+      if (betterplayer == "Mahomes")
+       {
+         Console.WriteLine("How can you say that Aaron Rodgers is way better.");
+       }
+     
+       
+    }
+  }
+}
