@@ -285,3 +285,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreToGive: 0
+  explosionParticle: {fileID: 3914137961686066899, guid: 4bc000a2e10f19d4fad7a0ae3b6ef67d, type: 3}
