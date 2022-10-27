@@ -11,12 +11,12 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         score = 0f;
-        textScore.text = "Candels: "+ score.ToString();
+        textScore.text = "Items Collected: "+ score.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textScore.text = "Candels: "+ score.ToString();
+        textScore.text = "Items Collected: "+ score.ToString();
     }
 }
