@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 30f;
-    public int damage = 10;
+    public int damage = 1;
     public Rigidbody2D rb; 
 
 
@@ -19,11 +19,11 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        GhostEnemy Enemy = other.GetComponent<GhostEnemy>();
+        Enemy enemy = other.GetComponent<Enemy>();
 
         if(other.gameObject.CompareTag("Enemy"))
         {
-            Enemy.TakeDamage(damage); //Run the TakeDamage function and apply damage to enemy
+            enemy.TakeDamage(damage); //Run the TakeDamage function and apply damage to enemy
         }
         Destroy(gameObject); // Destroy Projectile
     }
