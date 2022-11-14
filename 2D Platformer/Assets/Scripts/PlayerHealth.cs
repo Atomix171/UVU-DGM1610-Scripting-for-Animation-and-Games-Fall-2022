@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     public int currentHealth;
-    public float deathDelay;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         currentHealth = maxHealth;
     }
 
@@ -24,10 +25,12 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmgAmount)
     {
         currentHealth -= dmgAmount;
+        Debug.Log("Player Health ="+ currentHealth);
         
         if(currentHealth <= 0)
         {
-            Destroy(gameObject,deathDelay);
+            Debug.Log("You are dead! Game Over!"); //Game over message in the console
+            Time.timeScale = 0; //Freeze the game
         }
     }
 
