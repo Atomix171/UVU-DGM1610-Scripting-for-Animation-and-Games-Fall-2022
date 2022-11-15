@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
     public int maxHealth = 5;
     public int currentHealth;
@@ -16,18 +16,12 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int dmgAmount)
     {
         currentHealth -= dmgAmount;
-        Debug.Log("Player Health ="+ currentHealth);
+        Debug.Log("Player Health = "+ currentHealth);
         
-        if(currentHealth <= 0)
+        if(currentHealth <=0)
         {
             Debug.Log("You are dead! Game Over!"); //Game over message in the console
             Time.timeScale = 0; //Freeze the game
