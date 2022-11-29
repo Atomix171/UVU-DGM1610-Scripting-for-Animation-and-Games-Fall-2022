@@ -21,10 +21,7 @@ public class PlayerController : MonoBehaviour
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
 
-        if(Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+
     }
 
     // Start is called before the first frame update
@@ -38,25 +35,41 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         CameraLook();
+        
+        if(Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
     }
 
     void Move()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
+        float x = Input.GetAxis("Horizontal") * moveSpeed; // Getting input for left and right movement
+        float z = Input.GetAxis("Vertical") * moveSpeed; //Getting input for up and down movement
 
-        rb.velocity = new Vector3(x, rb.velocity.y, z);
+        //rb.velocity = new Vector3(x, rb.velocity.y, z); // Appying velocity to x-axis and the z-axis to drive the player movement
+        
+        Vector3 dir = transform.right * x + transform.forward * z; // Allows to move with the direction of the camera
+        dir.y = rb.velocity.y;
+        rb.velocity = dir;
     }
 
     void CameraLook()
     {
         float y = Input.GetAxis("Mouse X") * lookSensitivity; // Look up and down sens
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity; // Look right and left sens
+
+        //Restrict rotation on the X-Axis between maxLookX to minLookX
+        //rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
+
+        // Drives Camera Rotation
+        camera.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
+        transform.eulerAngles += Vector3.up * y;
     }
 
     void Jump()
     {
-        Ray ray = new Ray(transform.postion, Vector3.down);
+        Ray ray = new Ray(transform.position, Vector3.down);
 
         if(Physics.Raycast(ray, 1.1f))
         {
