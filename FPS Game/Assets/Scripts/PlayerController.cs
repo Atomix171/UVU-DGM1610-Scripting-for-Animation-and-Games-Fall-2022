@@ -4,31 +4,69 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Movement")]
+    [Header("Stats")]
     public float moveSpeed;
     public float jumpForce;
-    [Header("Camera")]
+    public float curHp;
+    public float maxHp;
+
+    [Header("Mouse Look")]
     public float lookSensitivity;
     public float maxLookX;
     public float minLookX;
     private float rotX;
+
+
     private Camera camera;
     private Rigidbody rb;
+    
 
     void Awake()
     {
-        // Get Componets
-        camera = Camera.main;
-        rb = GetComponent<Rigidbody>();
-
-
+        curHp = maxHp;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Get Componets
+        camera = Camera.main;
+        rb = GetComponent<Rigidbody>();        
     }
+
+    
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
+
+        if(curHp <= 0)
+            Die();
+
+        //GameManager.instance.UpdateHealthBar(CurHp, maxHp);
+    }
+
+    void Die()
+    {
+        //GameManager.instance.LoseGame
+        Debug.Log("Player has died! You Lose!");
+        Time.timeScale = 0;
+    }
+
+    public void GiveHealth(int amounToGive)
+    {
+        //curHp = Mathf.Clamp(curHp + amountToGive, 0, maxHp);
+        //GameUI.instance.UpdateHealthBar(curHp, maxHp);
+        Debug.Log("Player has been Healed!");
+    }
+
+    public void GiveAmmo(int amountToGive)
+    {
+        //weapon.curAmoo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
+        //GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
+        Debug.Log("Player collected ammo!");
+
+    }
+
 
     // Update is called once per frame
     void Update()

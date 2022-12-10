@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public PickupType type;
-    public int value;
+    public int healthAmount;
+    public int ammoAmount;
 
     [Header("Bobbing Motion")]
     public float rotationSpeed;
@@ -26,34 +27,35 @@ public class Pickup : MonoBehaviour
     public enum PickupType
     {
         Health,
-        Ammo,
-        Powerup
+        Ammo
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            //PlayerController plyaer = other.GetComponent<PlayerController>();
-        }
-        /*
-        switch(type)
-        {
-            case PickupType.Health:
-            player.GiveHealth(value);
-            break;
-            case PickupType.Ammo:
-            player.GiveAmmo(value);
-            break;
-            default:
-            print("Type not accepted");
-            break;
+            PlayerController player = other.GetComponent<PlayerController>();
+             
+          switch(type)
+          {
+             case PickupType.Health:
+             player.GiveHealth(healthAmount);
+             break;
 
-        }
+             case PickupType.Ammo:
+             player.GiveAmmo(ammoAmount);
+             break;
 
-        other.GetComponent<AudioSource>().PlayOneShot(pickupSFX);
-        Destroy Pickup */
-        Destroy(gameObject);
+             default:
+             print("Type not accepted");
+             break;
+          }
+            //Reference Audio Source to play sound effect
+            //other.GetComponent<AudioSource>().PlayOneShot(pickupSFX);
+            //Destroy Pickup 
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
