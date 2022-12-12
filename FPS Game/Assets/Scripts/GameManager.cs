@@ -15,19 +15,8 @@ public class GameManager : MonoBehaviour
         hasFlag = false;
         flagPlaced = false;
 
+        Time.timeScale = 1.0f;
 
-
-    }
-
-    public void PlaceFlag()
-    {
-        flagPlaced = true;
-    }
-
-    void WinGame()
-    {
-        Debug.Log("YOU WIN!");
-        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -38,4 +27,18 @@ public class GameManager : MonoBehaviour
             WinGame();
         }
     }
+
+    void WinGame()
+    {
+        Debug.Log("YOU WIN! YOU ARE VICTORIOUS!");
+        Time.timeScale = 0;
+    }
+
+    
+    public void PlaceFlag()
+    {
+        flagPlaced = true;
+    }
+
+
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HomeBase : MonoBehaviour
 {
     private GameManager gm;
+
     private Renderer flagRend;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class HomeBase : MonoBehaviour
         if(other.CompareTag("Player") && gm.hasFlag)
         {
             Debug.Log("Player has reached homebase!");
-            gm.PlaceFlag();
+            gm.PlaceFlag(); // Run Place flag funcion in game manager
             flagRend.enabled = true; // Make Flag visable
         }
     }
